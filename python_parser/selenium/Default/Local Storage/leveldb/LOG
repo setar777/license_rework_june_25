@@ -1,0 +1,15 @@
+2025/03/07-22:56:47.745 4 Reusing MANIFEST /home/setar/Desktop/parser/selenium/Default/Local Storage/leveldb/MANIFEST-000001
+2025/03/07-22:56:47.750 4 Recovering log #461
+2025/03/07-22:56:47.751 4 Reusing old log /home/setar/Desktop/parser/selenium/Default/Local Storage/leveldb/000461.log 
+2025/03/07-22:57:47.753 5 Level-0 table #465: started
+2025/03/07-22:57:47.762 5 Level-0 table #465: 17006 bytes OK
+2025/03/07-22:57:47.764 5 Delete type=0 #461
+2025/03/07-22:57:47.764 5 Compacting 4@0 + 1@1 files
+2025/03/07-22:57:47.767 5 Generated table #466@0: 365 keys, 17720 bytes
+2025/03/07-22:57:47.767 5 Compacted 4@0 + 1@1 files => 17720 bytes
+2025/03/07-22:57:47.768 5 compacted to: files[ 0 1 0 0 0 0 0 ]
+2025/03/07-22:57:47.769 5 Delete type=2 #465
+2025/03/07-22:57:47.769 5 Delete type=2 #459
+2025/03/07-22:57:47.769 5 Delete type=2 #454
+2025/03/07-22:57:47.769 5 Delete type=2 #456
+2025/03/07-22:57:47.769 5 Delete type=2 #462

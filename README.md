@@ -1,16 +1,9 @@
-# license_rework_june_25
+# How to parse the questions
 
-A new Flutter project.
+## Open the Python virtual environment
 
-## Getting Started
+Use `source .venv/bin/activate` in the terminal to open the virtual environment.
 
-This project is a starting point for a Flutter application.
+## Starting the parser
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Use `python setup.py` in the terminal to setup the parser.
