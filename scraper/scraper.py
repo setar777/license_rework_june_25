@@ -5,16 +5,22 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 from database import init_db, save_item
 from config import TARGET_URL
 from private import USER_EMAIL, USER_PASSWORD
 import time
+import json 
+import os 
+import pickle
 
 class WebScraper:
     def __init__(self):
         # Set up Selenium WebDriver
-        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        self.driver.maximize_window()
+        chrome_options = Options()
+        chrome_options.add_argument("user-data-dir=selenium")
+        self.driver = webdriver.Chrome(options=chrome_options)
+        #self.driver.maximize_window()
         
         self.wait = WebDriverWait(self.driver, 5)
         
@@ -25,20 +31,18 @@ class WebScraper:
         # open browser with url
         self.driver.get(TARGET_URL)
         
+        print("open_page()")
         if self.open_page() == None: 
             self.close()
             return
-        
+        print("check_logged_in_state()")
         if self.check_logged_in_state() == None:
             self.close()
             return 
+            
         
-        
-        
-        
-        
-
         print("Success!")
+        print(self.driver.get_cookies())
         # programm closed successfully
         self.close()
         
