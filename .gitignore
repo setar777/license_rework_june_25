@@ -48,3 +48,4 @@ app.*.map.json
 # scraper specific
 scraper/private.py
 scraper/selenium/
+scraper/databases/*

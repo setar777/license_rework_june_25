@@ -67,29 +67,29 @@ class WebScraper:
         # Question
         element1 = self.check_for_element_located_string(By.XPATH, "//div[@id='app_TestingPage_CoreTestingDisplay_t24qtext']")
         if element1 == None: return None
-        data["question"] = element1
+        data["question_text"] = element1
         # Points 
         element2 = self.check_for_element_located_string(By.XPATH, "//div[@id='app_TestingPage_CoreTestingDisplay_t24qpointslabel']")
         if element2 == None: return None
-        data["points"] = int(element2.replace("Punkte: ", "")) 
+        data["point_value"] = int(element2.replace("Punkte: ", "")) 
         # Question Identifier
         element3 = self.check_for_element_located_string(By.XPATH, "//div[@id='app_TestingPage_CoreTestingDisplay_t24qbasiclabel']")
         if element3 == None: return None
-        data["identifier"] = element3
+        data["question_uid"] = element3
         
         # Answers 
         # --- 1
         element4 = self.check_for_element_located_string(By.XPATH, "//span[@id='app_TestingPage_CoreTestingDisplay_t24answer1_answertext']")
         if element4 == None: return None
-        data["answer_1"] = element4
+        data["answer_1_text"] = element4
         # --- 2
         element5 = self.check_for_element_located_string(By.XPATH, "//span[@id='app_TestingPage_CoreTestingDisplay_t24answer2_answertext']")
         if element5 == None: return None
-        data["answer_2"] = element5
+        data["answer_2_text"] = element5
         # --- 3
         element6 = self.check_for_element_located_string(By.XPATH, "//span[@id='app_TestingPage_CoreTestingDisplay_t24answer3_answertext']")
         if element6 == None: return None
-        data["answer_3"] = element6
+        data["answer_3_text"] = element6
     
         
         # click first answer and continue
@@ -111,7 +111,7 @@ class WebScraper:
         # get hint 
         element7 =self.check_for_element_located(By.XPATH, "//div[@id='alert']")
         if(element7 == None): return None
-        data["hint"] = element7.text.replace("\\nOK", "").replace("Erklärung zur Frage\\n", "")
+        data["hint_text"] = element7.text.replace("\nOK", "").replace("Erklärung zur Frage\n", "")
         # close hint
         self.driver.implicitly_wait(2)
         body_element = self.driver.find_element(By.TAG_NAME, 'body')
@@ -123,7 +123,7 @@ class WebScraper:
         data["answer_3_value"] = self.check_correct("//div[@id='app_TestingPage_CoreTestingDisplay_t24answer3_t24qachkCorrect']")
         
         print(data)
-        
+        save_item(self.db_session, data)
         return True
     
     def check_correct(self, id: str):

@@ -1,5 +1,5 @@
 # database.py
-from sqlalchemy import create_engine, Column, Integer, String, Text
+from sqlalchemy import create_engine, Column, Integer, String, Text, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from config import DATABASE_URL
@@ -7,19 +7,29 @@ import time
 
 Base = declarative_base()
 
-tableName = f'scraped_items_{time.time()}' 
+tableName = f'scraped_items' 
 
 class ScrapedItem(Base):
     __tablename__ = tableName
     
     id = Column(Integer, primary_key=True)
-    title = Column(String(255))
-    description = Column(Text)
-    url = Column(String(255))
+    question_uid = Column(Text)
+    question_text = Column(Text)
+    point_value = Column(Integer)
+    # answers
+    answer_1_text = Column(Text)
+    answer_2_text = Column(Text)
+    answer_3_text = Column(Text)
+    answer_1_value = Column(Boolean)
+    answer_2_value = Column(Boolean)
+    answer_3_value = Column(Boolean)
+    hint_text = Column(Text)
+    
     # Add more columns as needed for your specific scraping needs
 
 def init_db():
-    engine = create_engine(DATABASE_URL)
+    
+    engine = create_engine(f'{DATABASE_URL}_{time.time()}.db')
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     return Session()
