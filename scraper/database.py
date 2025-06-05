@@ -3,11 +3,14 @@ from sqlalchemy import create_engine, Column, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from config import DATABASE_URL
+import time
 
 Base = declarative_base()
 
+tableName = f'scraped_items_{time.time()}' 
+
 class ScrapedItem(Base):
-    __tablename__ = 'scraped_items'
+    __tablename__ = tableName
     
     id = Column(Integer, primary_key=True)
     title = Column(String(255))
@@ -23,6 +26,7 @@ def init_db():
 
 def save_item(session, item_data):
     item = ScrapedItem(**item_data)
+    
     session.add(item)
     session.commit()
     return item
