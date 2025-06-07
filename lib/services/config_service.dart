@@ -1,6 +1,8 @@
 // lib/services/config_service.dart
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:license_rework_june_25/hex_color.dart';
 
 class ConfigService {
   static final ConfigService _instance = ConfigService._internal();
@@ -73,6 +75,14 @@ class ConfigService {
 
   // Specific getters for common config values
   String get tableName => getValue('database', 'tableName') ?? 'scraped_items';
+  Color get backgroundColor =>
+      HexColor.fromHex(getValue('color', 'background') ?? '#ff0000');
+  Color get titleColor =>
+      HexColor.fromHex(getValue('color', 'title') ?? '#ff0000');
+  Color get onTitleColor =>
+      HexColor.fromHex(getValue('color', 'onTitle') ?? '#ffffff');
+  Color get textOnTitleColor =>
+      HexColor.fromHex(getValue('color', 'textOnTitle') ?? '#ffffff');
 
   bool get isLoaded => _config != null;
 }
