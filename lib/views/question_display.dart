@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:license_rework_june_25/models/question_item.dart';
 import 'package:license_rework_june_25/services/config_service.dart';
+import 'package:license_rework_june_25/views/question_body.dart';
+import 'package:license_rework_june_25/views/question_bottom_bar.dart';
 import 'package:license_rework_june_25/views/question_title_bar.dart';
 
 class QuestionDisplay extends StatefulWidget {
@@ -15,27 +16,24 @@ class _QuestionDisplayState extends State<QuestionDisplay> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: ConfigService().backgroundColor,
-          child: Column(
-            children: [
-              QuestionTitleBar(
-                question: QuestionItem(
-                  questionUid: "1.1.01-110",
-                  questionText: "Wie wirkt sich Müdigkeit beim Fahren aus?",
-                  pointValue: 4,
-                  answer1Text: "Nachlassende Aufmerksamkeit",
-                  answer2Text: "Verzögerte Reaktionen",
-                  answer3Text: "Eingeschränkte Wahrnehmung",
-                  answer1Value: true,
-                  answer2Value: true,
-                  answer3Value: true,
-                  hintText:
-                      "Müdigkeit kann den Fahrer auf vielfältige Art und W\n\n...\n\nIn der Vollversion finden Sie die vollständige Erklärung und ggf. die StVO Paragraphen zu dieser Frage.",
-                ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Container(
+              color: ConfigService().backgroundColor,
+              width: constraints.maxWidth,
+              height: constraints.maxHeight,
+              // color: ConfigService().backgroundColor,
+              child: Column(
+                children: [
+                  QuestionTitleBar(),
+
+                  Expanded(flex: 3, child: QuestionBody()),
+                  Expanded(flex: 1, child: Container()),
+                  QuestionBottomBar(),
+                ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

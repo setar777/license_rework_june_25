@@ -83,6 +83,8 @@ class ConfigService {
       HexColor.fromHex(getValue('color', 'onTitle') ?? '#ffffff');
   Color get textOnTitleColor =>
       HexColor.fromHex(getValue('color', 'textOnTitle') ?? '#ffffff');
+  Color get textOnBackgroundColor =>
+      HexColor.fromHex(getValue('color', 'textOnBackground') ?? '#ffffff');
 
   bool get isLoaded => _config != null;
 }

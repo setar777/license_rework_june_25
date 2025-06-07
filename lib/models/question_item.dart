@@ -64,4 +64,18 @@ class QuestionItem {
   String toString() {
     return 'QuestionItem{id: $id, question_uid: $questionUid, question_text: $questionText, point_value: $pointValue, answer_1_text: $answer1Text, answer_2_text: $answer2Text, answer_3_text: $answer3Text, answer_1_value: $answer1Value, answer_2_value: $answer2Value, answer_3_value: $answer3Value, hint_text: $hintText}';
   }
+
+  static QuestionItem example = QuestionItem(
+    questionUid: "1.1.01-110",
+    questionText: "Wie wirkt sich Müdigkeit beim Fahren aus?",
+    pointValue: 4,
+    answer1Text: "Nachlassende Aufmerksamkeit",
+    answer2Text: "Verzögerte Reaktionen",
+    answer3Text: "Eingeschränkte Wahrnehmung",
+    answer1Value: true,
+    answer2Value: true,
+    answer3Value: true,
+    hintText:
+        "Müdigkeit kann den Fahrer auf vielfältige Art und W\n\n...\n\nIn der Vollversion finden Sie die vollständige Erklärung und ggf. die StVO Paragraphen zu dieser Frage.",
+  );
 }

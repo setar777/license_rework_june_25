@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:license_rework_june_25/models/question_item.dart';
 import 'package:license_rework_june_25/services/config_service.dart';
+import 'package:license_rework_june_25/views/question_service.dart';
 
 class QuestionTitleBar extends StatelessWidget {
-  const QuestionTitleBar({super.key, required this.question});
-
-  final QuestionItem question;
+  const QuestionTitleBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class QuestionTitleBar extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 8),
             child: Text(
-              question.questionUid,
+              QuestionService.instance.currentQuestion.questionUid,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: ConfigService().onTitleColor,
@@ -46,7 +44,7 @@ class QuestionTitleBar extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: 8),
             child: Text(
-              "Punkte: ${question.pointValue}",
+              "Punkte: ${QuestionService.instance.currentQuestion.pointValue}",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: ConfigService().onTitleColor,
